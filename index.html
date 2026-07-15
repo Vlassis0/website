@@ -175,6 +175,13 @@
   }
 
   .hero-art{position:relative;}
+  .hero-art-container{
+    background:var(--panel);
+    border:2px solid var(--panel-line);
+    border-radius:3px;
+    padding:24px;
+    box-shadow:inset 0 1px 0 var(--bezel-light), 0 3px 0 rgba(0,0,0,0.3);
+  }
   .hero-art svg{width:100%; height:auto;}
   .draw{stroke-dasharray:900; stroke-dashoffset:900; animation:draw 2.4s ease forwards;}
   .draw.d2{animation-delay:.3s;}
@@ -189,7 +196,7 @@
 
   @media (max-width:900px){
     .hero .wrap{grid-template-columns:1fr;}
-    .hero-art{order:-1; max-width:320px; margin:0 auto;}
+    .hero-art-container{order:-1; max-width:320px; margin:0 auto;}
   }
 
   section{padding:80px 0;}
@@ -443,7 +450,7 @@
 </header>
 
 <noscript>
-  <p style="padding: 20px; background: var(--bg-soft); color: var(--text); text-align: center; border-bottom: 2px solid var(--bezel-dark);">This site works best with JavaScript enabled for navigation and interactivity.</p>
+  <p style="padding: 20px; background: var(--bg-soft); color: var(--text); text-align: center; border-bottom: 2px solid var(--bezel-dark);">This site works best with JavaScript enabled for navigation [...]
 </noscript>
 
 <main id="top">
@@ -461,58 +468,109 @@
         <p class="hero-fine mono">NO CREDIT CHECK · NO HIDDEN FEES · LOCAL PICKUP OR DELIVERY</p>
       </div>
 
-      <div class="hero-art" aria-hidden="true">
-        <svg viewBox="0 0 480 440" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <filter id="softGlow" x="-60%" y="-60%" width="220%" height="220%">
-              <feGaussianBlur stdDeviation="4" result="blur"/>
-              <feMerge>
-                <feMergeNode in="blur"/>
-                <feMergeNode in="SourceGraphic"/>
-              </feMerge>
-            </filter>
-          </defs>
+      <div class="hero-art-container">
+        <div class="hero-art" aria-hidden="true">
+          <svg viewBox="0 0 480 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <filter id="softGlow" x="-60%" y="-60%" width="220%" height="220%">
+                <feGaussianBlur stdDeviation="3" result="blur"/>
+                <feMerge>
+                  <feMergeNode in="blur"/>
+                  <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+              </filter>
+            </defs>
 
-          <rect class="draw" x="30" y="20" width="420" height="380" rx="8" stroke="#00FF00" stroke-width="2.5" filter="url(#softGlow)"/>
-          <rect class="draw d2" x="46" y="36" width="240" height="348" rx="5" stroke="#333333" stroke-width="1"/>
+            <!-- PC Case outline -->
+            <rect class="draw" x="20" y="10" width="440" height="330" rx="6" stroke="#00FF00" stroke-width="2" filter="url(#softGlow)"/>
+            
+            <!-- Motherboard base -->
+            <rect class="draw d2" x="40" y="30" width="400" height="280" rx="4" stroke="#333333" stroke-width="1" fill="none"/>
+            
+            <!-- Motherboard chipset/circuits pattern -->
+            <g class="draw d2" stroke="#333333" stroke-width="0.8" opacity="0.6">
+              <rect x="50" y="40" width="30" height="30" rx="2"/>
+              <rect x="100" y="50" width="25" height="25" rx="2"/>
+              <rect x="150" y="45" width="28" height="28" rx="2"/>
+              <path d="M80 70 L110 70 M80 80 L110 80 M80 90 L110 90"/>
+              <path d="M180 70 L210 70 M180 80 L210 80 M180 90 L210 90"/>
+            </g>
 
-          <circle class="draw d2" cx="100" cy="95" r="32" stroke="#00FF00" stroke-width="1.5" filter="url(#softGlow)"/>
-          <circle class="draw d2" cx="100" cy="95" r="10" stroke="#333333" stroke-width="1"/>
-          <line class="draw d2" x1="100" y1="65" x2="100" y2="125" stroke="#333333" stroke-width="1"/>
-          <line class="draw d2" x1="70" y1="95" x2="130" y2="95" stroke="#333333" stroke-width="1"/>
+            <!-- CPU (large socket) -->
+            <g>
+              <rect class="draw d2" x="250" y="50" width="60" height="60" rx="3" stroke="#00FF00" stroke-width="1.5" filter="url(#softGlow)"/>
+              <g class="draw d3" stroke="#333333" stroke-width="0.8">
+                <line x1="260" y1="60" x2="300" y2="60"/>
+                <line x1="260" y1="70" x2="300" y2="70"/>
+                <line x1="260" y1="80" x2="300" y2="80"/>
+                <line x1="260" y1="90" x2="300" y2="90"/>
+                <line x1="260" y1="100" x2="300" y2="100"/>
+              </g>
+              <circle class="glow-pulse" cx="280" cy="80" r="2.5" fill="#00FF00"/>
+            </g>
 
-          <rect class="draw d2" x="150" y="55" width="10" height="80" rx="2" stroke="#00FF00" stroke-width="1.2" filter="url(#softGlow)"/>
-          <rect class="draw d2" x="166" y="55" width="10" height="80" rx="2" stroke="#00FF00" stroke-width="1.2" filter="url(#softGlow)"/>
-          <circle class="glow-pulse" cx="155" cy="60" r="2.5" fill="#00FF00"/>
-          <circle class="glow-pulse" cx="171" cy="60" r="2.5" fill="#00FF00"/>
+            <!-- RAM slots (3x) -->
+            <g>
+              <rect class="draw d2" x="60" y="130" width="12" height="70" rx="2" stroke="#00FF00" stroke-width="1.2" filter="url(#softGlow)"/>
+              <g class="draw d3" stroke="#333333" stroke-width="0.5">
+                <line x1="60" y1="145" x2="72" y2="145"/>
+                <line x1="60" y1="160" x2="72" y2="160"/>
+                <line x1="60" y1="175" x2="72" y2="175"/>
+              </g>
+              
+              <rect class="draw d2" x="80" y="130" width="12" height="70" rx="2" stroke="#00FF00" stroke-width="1.2" filter="url(#softGlow)"/>
+              <g class="draw d3" stroke="#333333" stroke-width="0.5">
+                <line x1="80" y1="145" x2="92" y2="145"/>
+                <line x1="80" y1="160" x2="92" y2="160"/>
+                <line x1="80" y1="175" x2="92" y2="175"/>
+              </g>
 
-          <path class="draw d3" d="M200 60 h40 v20 h-20 v15 M100 130 v20 h40" stroke="#333333" stroke-width="1"/>
+              <rect class="draw d2" x="100" y="130" width="12" height="70" rx="2" stroke="#00FF00" stroke-width="1.2" filter="url(#softGlow)"/>
+              <g class="draw d3" stroke="#333333" stroke-width="0.5">
+                <line x1="100" y1="145" x2="112" y2="145"/>
+                <line x1="100" y1="160" x2="112" y2="160"/>
+                <line x1="100" y1="175" x2="112" y2="175"/>
+              </g>
 
-          <rect class="draw d2" x="66" y="190" width="200" height="56" rx="4" stroke="#00FF00" stroke-width="1.4" filter="url(#softGlow)"/>
-          <circle class="draw d3" cx="105" cy="218" r="18" stroke="#333333" stroke-width="1"/>
-          <circle class="draw d3" cx="150" cy="218" r="18" stroke="#333333" stroke-width="1"/>
-          <line class="draw d3" x1="66" y1="252" x2="266" y2="252" stroke="#333333" stroke-width="6"/>
+              <!-- RAM glow indicators -->
+              <circle class="glow-pulse" cx="66" cy="140" r="2" fill="#00FF00"/>
+              <circle class="glow-pulse" cx="86" cy="140" r="2" fill="#00FF00"/>
+              <circle class="glow-pulse" cx="106" cy="140" r="2" fill="#00FF00"/>
+            </g>
 
-          <path class="draw d3" d="M266 210 q26 6 26 40 q0 40 -30 46" stroke="#333333" stroke-width="1.2"/>
+            <!-- Power Supply (bottom right) -->
+            <g>
+              <rect class="draw d2" x="350" y="240" width="70" height="50" rx="3" stroke="#00FF00" stroke-width="1.4" filter="url(#softGlow)"/>
+              <text x="360" y="270" font-family="IBM Plex Mono" font-size="8" fill="#333333" letter-spacing="0.5">PSU</text>
+              <circle class="glow-pulse" cx="385" cy="255" r="2" fill="#00FF00"/>
+            </g>
 
-          <rect class="draw d2" x="66" y="270" width="200" height="18" rx="2" stroke="#333333" stroke-width="1"/>
-          <rect class="draw d2" x="66" y="294" width="200" height="18" rx="2" stroke="#333333" stroke-width="1"/>
-          <circle class="glow-pulse" cx="256" cy="279" r="2.5" fill="#00FF00"/>
+            <!-- Storage drives (SSD/HDD) -->
+            <g>
+              <rect class="draw d2" x="140" y="220" width="45" height="25" rx="2" stroke="#00FF00" stroke-width="1.2" filter="url(#softGlow)"/>
+              <circle class="draw d3" cx="152" cy="232" r="3" stroke="#333333" stroke-width="0.8"/>
+              <circle class="draw d3" cx="168" cy="232" r="3" stroke="#333333" stroke-width="0.8"/>
+              <circle class="glow-pulse" cx="175" cy="222" r="1.5" fill="#00FF00"/>
+            </g>
 
-          <circle class="draw d2" cx="365" cy="120" r="58" stroke="#00FF00" stroke-width="1.4" filter="url(#softGlow)"/>
-          <circle class="glow-pulse" cx="365" cy="120" r="40" stroke="#00FF00" stroke-width="0.8" filter="url(#softGlow)"/>
-          <path class="draw d3" d="M365 82v76M327 120h76M340 95l50 50M390 95l-50 50" stroke="#333333" stroke-width="1"/>
+            <!-- Cooling (fan) -->
+            <g>
+              <circle class="draw d2" cx="280" cy="240" r="25" stroke="#00FF00" stroke-width="1.2" filter="url(#softGlow)"/>
+              <g class="draw d3" stroke="#333333" stroke-width="1">
+                <path d="M280 220 L280 260 M260 240 L300 240"/>
+                <circle cx="280" cy="240" r="4" stroke="#333333" stroke-width="0.8" fill="none"/>
+              </g>
+              <circle class="glow-pulse" cx="280" cy="240" r="6" stroke="#00FF00" stroke-width="0.8" filter="url(#softGlow)"/>
+            </g>
 
-          <circle class="draw d2" cx="365" cy="250" r="58" stroke="#00FF00" stroke-width="1.4" filter="url(#softGlow)"/>
-          <circle class="glow-pulse" cx="365" cy="250" r="40" stroke="#00FF00" stroke-width="0.8" filter="url(#softGlow)"/>
-          <path class="draw d3" d="M365 212v76M327 250h76M340 225l50 50M390 225l-50 50" stroke="#333333" stroke-width="1"/>
-
-          <rect class="draw" x="55" y="400" width="26" height="10" rx="2" stroke="#00FF00" stroke-width="1.4" filter="url(#softGlow)"/>
-          <rect class="draw" x="399" y="400" width="26" height="10" rx="2" stroke="#00FF00" stroke-width="1.4" filter="url(#softGlow)"/>
-
-          <text x="322" y="335" fill="#00FF00" font-family="IBM Plex Mono" font-size="11" letter-spacing="1" filter="url(#softGlow)">BUDGET BUILD</text>
-          <text x="46" y="405" fill="#00FF00" font-family="IBM Plex Mono" font-size="10" letter-spacing="1" filter="url(#softGlow)">REBUILT // TESTED // READY</text>
-        </svg>
+            <!-- Power/status lights -->
+            <circle class="glow-pulse" cx="60" cy="50" r="2.5" fill="#00FF00"/>
+            <circle class="glow-pulse" cx="80" cy="50" r="2.5" fill="#00FF00" style="animation-delay: 0.2s;"/>
+            
+            <!-- Label -->
+            <text x="160" y="330" fill="#00FF00" font-family="IBM Plex Mono" font-size="11" letter-spacing="1" filter="url(#softGlow)">INSIDE YOUR BUILD</text>
+          </svg>
+        </div>
       </div>
     </div>
   </section>
@@ -678,19 +736,19 @@
         </details>
         <details>
           <summary>What is "cost assistance"?</summary>
-          <p>You have a job, so we don't charge full price. You tell us what you can afford — no pay stubs, no proof — and we price it there. We offer payment plans too, so you're not stuck paying it all upfront.</p>
+          <p>You have a job, so we don't charge full price. You tell us what you can afford — no pay stubs, no proof — and we price it there. We offer payment plans too, so you're not stuck p[...]
         </details>
         <details>
           <summary>What shape are these computers in?</summary>
-          <p>Rebuilt, not used-as-is. Cleaned, tested for hours under load, repaired or replaced part-by-part. Every machine comes with 90 days of support. If something breaks, bring it back and we'll fix it.</p>
+          <p>Rebuilt, not used-as-is. Cleaned, tested for hours under load, repaired or replaced part-by-part. Every machine comes with 90 days of support. If something breaks, bring it back and [...]
         </details>
         <details>
           <summary>Can I pick what kind of computer I get?</summary>
-          <p>Tell us what you'll use it for — job applications, schoolwork, remote work — and we match a build to that. We work with what's donated, so specs vary, but it'll do what you need it to.</p>
+          <p>Tell us what you'll use it for — job applications, schoolwork, remote work — and we match a build to that. We work with what's donated, so specs vary, but it'll do what you need [...]
         </details>
         <details>
           <summary>Can I donate a computer?</summary>
-          <p>Yes. Email us at <a href="mailto:805-801-5585" style="color:var(--accent); text-decoration:underline; text-shadow:0 0 4px rgba(0,255,0,0.3);">805-801-5585</a> or call and we'll let you know what we can take and what happens next.</p>
+          <p>Yes. Email us at <a href="mailto:805-801-5585" style="color:var(--accent); text-decoration:underline; text-shadow:0 0 4px rgba(0,255,0,0.3);">805-801-5585</a> or call and we'll let y[...]
         </details>
       </div>
     </div>
@@ -713,10 +771,10 @@
       </div>
 
       <div class="form-embed">
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSehCtKpOtp0I8Cw-qYEYjyrDqKMZghz8FH2Q2-B1XUMNCw7zg/viewform?embedded=true" title="Second Boot application form" loading="lazy">Loading form...</iframe>
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSehCtKpOtp0I8Cw-qYEYjyrDqKMZghz8FH2Q2-B1XUMNCw7zg/viewform?embedded=true" title="Second Boot application form" loading="lazy">Loading[...]
         <div class="form-fallback">
           <p class="mono">Form not loading?</p>
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSehCtKpOtp0I8Cw-qYEYjyrDqKMZghz8FH2Q2-B1XUMNCw7zg/viewform?usp=sharing" target="_blank" rel="noopener" class="btn btn-ghost">Open in new tab</a>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSehCtKpOtp0I8Cw-qYEYjyrDqKMZghz8FH2Q2-B1XUMNCw7zg/viewform?usp=sharing" target="_blank" rel="noopener" class="btn btn-ghost">Open in ne[...]
         </div>
       </div>
     </div>
@@ -729,7 +787,7 @@
     <div class="footer-top">
       <div>
         <a href="#top" class="brand"><span class="dot"></span>SECOND BOOT</a>
-        <p style="color:var(--text-dim); font-size:14px; margin-top:12px; max-width:38ch; line-height:1.7;">A nonprofit rebuilding computers and putting them back to work — free for those with no income, affordable for those who need help.</p>
+        <p style="color:var(--text-dim); font-size:14px; margin-top:12px; max-width:38ch; line-height:1.7;">A nonprofit rebuilding computers and putting them back to work — free for those with [...]
       </div>
       <div class="footer-cols">
         <div class="footer-col">
