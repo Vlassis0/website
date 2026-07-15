@@ -11,28 +11,28 @@
 <meta property="og:url" content="https://secondbootpcs.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="font" href="https://fonts.googleapis.com/css2?family=Exo+2:wght@600;700;800&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@600;700;800&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link rel="preload" as="font" href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=IBM+Plex+Mono:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=IBM+Plex+Mono:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#0A0A0A;
-    --bg-soft:#111111;
-    --panel:#151515;
-    --panel-line:#292929;
+    --bg:#0F0F0F;
+    --bg-soft:#1A1A1A;
+    --panel:#1F1F1F;
+    --panel-light:#2A2A2A;
+    --panel-line:#333333;
+    --bezel-light:#404040;
+    --bezel-dark:#0A0A0A;
 
-    --blue:#FFFFFF;
-    --blue-dim:#2A2A2A;
-    --cyan:#D6D6D6;
-    --cyan-dim:#1A1A1A;
+    --text:#E8E8E8;
+    --text-dim:#999999;
+    --accent:#00FF00;
+    --accent-dim:#008000;
 
-    --text:#F2F2F0;
-    --text-dim:#96968F;
+    --line:rgba(255,255,255,0.08);
 
-    --line:rgba(255,255,255,0.12);
-
-    --display:'Exo 2', sans-serif;
-    --body:'Rajdhani', sans-serif;
-    --mono:'Share Tech Mono', monospace;
+    --mono:'IBM Plex Mono', monospace;
+    --body:'Space Mono', monospace;
+    --display:'Courier Prime', monospace;
 
     --max:1160px;
   }
@@ -41,101 +41,93 @@
   html{scroll-behavior:smooth;}
   body{
     background:
-      radial-gradient(ellipse 1000px 600px at 15% -10%, rgba(255,255,255,0.04), transparent 60%),
+      radial-gradient(ellipse 1200px 800px at 20% -5%, rgba(0,255,0,0.02), transparent 50%),
       var(--bg);
     color:var(--text);
     font-family:var(--body);
-    font-size:18px;
-    font-weight:500;
-    line-height:1.6;
+    font-size:16px;
+    font-weight:400;
+    line-height:1.7;
     -webkit-font-smoothing:antialiased;
+    letter-spacing:0.02em;
   }
   img,svg{display:block; max-width:100%;}
   a{color:inherit;}
   ul{list-style:none;}
 
-  h1,h2,h3,.display{font-family:var(--display); font-weight:700; letter-spacing:0.005em;}
-  .mono{font-family:var(--mono); letter-spacing:0.03em;}
+  h1,h2,h3,.display{font-family:var(--display); font-weight:700; letter-spacing:0.03em;}
+  .mono{font-family:var(--mono); letter-spacing:0.04em;}
 
-  .wrap{max-width:var(--max); margin:0 auto; padding:0 28px;}
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 32px;}
 
   a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible, [role="radio"]:focus-visible{
-    outline:2px solid var(--text);
-    outline-offset:3px;
+    outline:2px solid var(--accent);
+    outline-offset:2px;
+    box-shadow:0 0 0 2px var(--bg), 0 0 8px rgba(0,255,0,0.3);
   }
 
-  .tag{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    font-family:var(--mono);
-    font-size:12.5px;
-    letter-spacing:0.14em;
-    text-transform:uppercase;
-    color:var(--cyan);
-    padding:5px 12px;
-    border:1px solid rgba(255,255,255,0.22);
-    border-radius:3px;
-    background:rgba(255,255,255,0.03);
-  }
-  .tag::before{
-    content:"";
-    width:6px; height:6px;
-    border-radius:50%;
-    background:var(--text);
-    flex-shrink:0;
-  }
-
+  /* CRT-style bezel frame */
   header{
     position:sticky; top:0; z-index:50;
-    background:rgba(10,10,10,0.9);
-    backdrop-filter:blur(10px);
-    border-bottom:1px solid var(--line);
+    background:var(--bg);
+    border-bottom:3px solid var(--bezel-dark);
+    box-shadow:inset 0 2px 0 var(--bezel-light), inset 0 -1px 0 var(--bezel-dark);
   }
   nav.wrap{
     display:flex; align-items:center; justify-content:space-between;
-    padding-top:18px; padding-bottom:18px;
+    padding:16px 32px;
   }
   .brand{
     display:flex; align-items:center; gap:10px;
-    font-family:var(--display); font-weight:700; font-size:19px;
-    color:var(--text); text-decoration:none;
-    letter-spacing:0.02em;
+    font-family:var(--display); font-weight:700; font-size:18px;
+    color:var(--accent); text-decoration:none;
+    letter-spacing:0.05em;
+    text-shadow:0 0 10px rgba(0,255,0,0.3);
+    transition:text-shadow .2s ease;
   }
+  .brand:hover{text-shadow:0 0 20px rgba(0,255,0,0.6);}
   .brand .dot{
-    width:9px; height:9px; background:var(--text); border-radius:50%;
+    width:8px; height:8px; background:var(--accent); border-radius:50%;
+    box-shadow:0 0 8px var(--accent);
   }
-  .navlinks{display:flex; gap:32px; align-items:center;}
+  .navlinks{display:flex; gap:28px; align-items:center;}
   .navlinks a{
-    font-family:var(--mono); font-size:13px; text-transform:uppercase;
-    letter-spacing:0.1em; text-decoration:none; color:var(--text-dim);
-    transition:color .15s ease;
+    font-family:var(--mono); font-size:12px; text-transform:uppercase;
+    letter-spacing:0.08em; text-decoration:none; color:var(--text-dim);
+    transition:color .15s ease, text-shadow .15s ease;
   }
-  .navlinks a:hover{color:var(--text);}
+  .navlinks a:hover{color:var(--accent); text-shadow:0 0 8px rgba(0,255,0,0.4);}
   .navcta{
-    font-family:var(--mono); font-size:13px; text-transform:uppercase;
-    letter-spacing:0.08em; padding:10px 18px; border-radius:3px;
-    background:var(--text); color:var(--bg); text-decoration:none;
+    font-family:var(--mono); font-size:11px; text-transform:uppercase;
+    letter-spacing:0.08em; padding:10px 16px; border-radius:2px;
+    background:var(--accent); color:var(--bg); text-decoration:none;
     font-weight:700; white-space:nowrap;
-    transition:opacity .15s ease;
+    border:2px solid var(--accent);
+    box-shadow:inset 0 2px 0 rgba(255,255,255,0.2), 0 3px 0 rgba(0,0,0,0.4);
+    transition:all .15s ease;
+    cursor:pointer;
   }
-  .navcta:hover{opacity:0.8;}
-  .navtoggle{display:none; background:none; border:none; color:var(--text); font-size:24px; cursor:pointer;}
+  .navcta:hover{
+    background:rgba(0,255,0,0.9);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,0.3), 0 2px 0 rgba(0,0,0,0.3);
+    transform:translateY(1px);
+  }
+  .navtoggle{display:none; background:none; border:none; color:var(--accent); font-size:20px; cursor:pointer;}
 
   @media (max-width:820px){
     .navlinks{
       position:fixed; inset:64px 0 auto 0; background:var(--bg-soft);
-      flex-direction:column; align-items:flex-start; padding:24px 28px;
-      border-bottom:1px solid var(--line);
+      flex-direction:column; align-items:flex-start; padding:24px 32px;
+      border-bottom:2px solid var(--bezel-dark);
       transform:translateY(-8px); opacity:0; pointer-events:none;
       transition:transform .2s ease, opacity .2s ease;
     }
     .navlinks.open{transform:translateY(0); opacity:1; pointer-events:auto;}
-    .navlinks a{font-size:15px; padding:10px 0;}
+    .navlinks a{font-size:14px; padding:10px 0;}
     .navtoggle{display:block;}
   }
 
-  .hero{padding:92px 0 68px; position:relative; overflow:hidden;}
+  .hero{padding:80px 0 60px; position:relative; overflow:hidden;}
   .hero .wrap{
     display:grid;
     grid-template-columns:1.05fr 0.95fr;
@@ -143,40 +135,43 @@
     align-items:center;
   }
   .hero h1{
-    font-size:clamp(2.3rem, 4.4vw, 3.4rem);
+    font-size:clamp(2rem, 4vw, 3rem);
     line-height:1.1;
     color:var(--text);
+    letter-spacing:0.03em;
   }
   .hero h1 em{
     font-style:normal;
-    color:var(--text);
-    border-bottom:3px solid var(--text);
+    color:var(--accent);
+    text-shadow:0 0 12px rgba(0,255,0,0.4);
   }
   .hero p.lede{
-    margin-top:22px;
-    font-size:19.5px;
+    margin-top:20px;
+    font-size:16px;
     color:var(--text-dim);
-    max-width:46ch;
-    font-weight:500;
+    max-width:50ch;
+    font-weight:400;
+    line-height:1.8;
   }
-  .hero-ctas{display:flex; gap:14px; margin-top:32px; flex-wrap:wrap;}
+  .hero-ctas{display:flex; gap:12px; margin-top:28px; flex-wrap:wrap;}
   .btn{
-    font-family:var(--mono); font-size:13.5px; text-transform:uppercase;
-    letter-spacing:0.08em; padding:14px 24px; border-radius:4px;
-    text-decoration:none; font-weight:700; border:1px solid transparent;
+    font-family:var(--mono); font-size:11px; text-transform:uppercase;
+    letter-spacing:0.08em; padding:12px 20px; border-radius:2px;
+    text-decoration:none; font-weight:700; border:2px solid;
     display:inline-flex; align-items:center; gap:8px;
-    transition:transform .15s ease, background .15s ease, border-color .15s ease, opacity .15s ease;
+    transition:all .15s ease;
     cursor:pointer;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,0.15), 0 3px 0 rgba(0,0,0,0.4);
   }
-  .btn:hover{transform:translateY(-2px);}
-  .btn-primary{background:var(--text); color:var(--bg);}
-  .btn-primary:hover{opacity:0.82;}
-  .btn-ghost{border-color:rgba(255,255,255,0.3); color:var(--text); background:rgba(255,255,255,0.02);}
-  .btn-ghost:hover{border-color:var(--text);}
+  .btn:hover{transform:translateY(1px); box-shadow:inset 0 1px 0 rgba(255,255,255,0.15), 0 2px 0 rgba(0,0,0,0.3);}
+  .btn-primary{background:var(--accent); color:var(--bg); border-color:var(--accent);}
+  .btn-primary:hover{background:rgba(0,255,0,0.9); box-shadow:inset 0 1px 0 rgba(255,255,255,0.2), 0 3px 0 rgba(0,0,0,0.4), 0 0 12px rgba(0,255,0,0.3);}
+  .btn-ghost{border-color:var(--text-dim); color:var(--text); background:transparent;}
+  .btn-ghost:hover{border-color:var(--accent); color:var(--accent); background:rgba(0,255,0,0.05); box-shadow:inset 0 1px 0 rgba(255,255,255,0.1), 0 0 12px rgba(0,255,0,0.2);}
 
   .hero-fine{
-    margin-top:26px; font-family:var(--mono); font-size:12px;
-    color:var(--text-dim); letter-spacing:0.04em;
+    margin-top:24px; font-family:var(--mono); font-size:10px;
+    color:var(--text-dim); letter-spacing:0.06em; text-transform:uppercase;
   }
 
   .hero-art{position:relative;}
@@ -184,9 +179,9 @@
   .draw{stroke-dasharray:900; stroke-dashoffset:900; animation:draw 2.4s ease forwards;}
   .draw.d2{animation-delay:.3s;}
   .draw.d3{animation-delay:.6s;}
-  .glow-pulse{animation:pulse 2.4s ease-in-out .4s infinite;}
+  .glow-pulse{animation:pulse 2.4s ease-in-out .4s infinite; filter:drop-shadow(0 0 4px rgba(0,255,0,0.4));}
   @keyframes draw{to{stroke-dashoffset:0;}}
-  @keyframes pulse{0%,100%{opacity:.35;} 50%{opacity:1;}}
+  @keyframes pulse{0%,100%{opacity:.4;} 50%{opacity:1;}}
   @media (prefers-reduced-motion:reduce){
     .draw{animation:none; stroke-dashoffset:0;}
     .glow-pulse{animation:none;}
@@ -194,158 +189,248 @@
 
   @media (max-width:900px){
     .hero .wrap{grid-template-columns:1fr;}
-    .hero-art{order:-1; max-width:340px; margin:0 auto;}
+    .hero-art{order:-1; max-width:320px; margin:0 auto;}
   }
 
-  section{padding:92px 0;}
-  .section-head{max-width:640px; margin-bottom:52px;}
+  section{padding:80px 0;}
+  .section-head{max-width:620px; margin-bottom:48px;}
+  .tag{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family:var(--mono);
+    font-size:10px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--accent);
+    padding:6px 12px;
+    border:1px solid var(--bezel-light);
+    border-radius:2px;
+    background:rgba(0,255,0,0.05);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,0.05), 0 2px 0 rgba(0,0,0,0.3);
+  }
+  .tag::before{
+    content:"";
+    width:5px; height:5px;
+    border-radius:50%;
+    background:var(--accent);
+    flex-shrink:0;
+    box-shadow:0 0 4px var(--accent);
+  }
   .section-head h2{
-    font-size:clamp(1.7rem, 3vw, 2.3rem);
-    margin-top:14px;
+    font-size:clamp(1.5rem, 2.8vw, 2rem);
+    margin-top:16px;
     color:var(--text);
+    letter-spacing:0.02em;
   }
-  .section-head p{margin-top:14px; color:var(--text-dim); font-size:17.5px;}
+  .section-head p{margin-top:14px; color:var(--text-dim); font-size:15px;}
 
-  .divider{height:1px; background:repeating-linear-gradient(90deg, var(--line) 0 8px, transparent 8px 16px);}
+  .divider{height:1px; background:repeating-linear-gradient(90deg, var(--line) 0 6px, transparent 6px 12px); margin:40px 0;}
 
-  .paths{background:var(--bg-soft); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
-  .path-grid{display:grid; grid-template-columns:1fr 1fr; gap:24px;}
+  .paths{background:var(--bg-soft); border-top:2px solid var(--bezel-dark); border-bottom:2px solid var(--bezel-dark); box-shadow:inset 0 2px 0 var(--bezel-light);}
+  .path-grid{display:grid; grid-template-columns:1fr 1fr; gap:20px;}
   @media (max-width:760px){.path-grid{grid-template-columns:1fr;}}
 
   .path-card{
     background:var(--panel);
-    border:1px solid var(--panel-line);
-    border-radius:8px;
-    padding:34px 30px;
+    border:2px solid var(--panel-line);
+    border-radius:4px;
+    padding:28px;
     position:relative;
     display:flex; flex-direction:column;
     cursor:pointer;
-    transition:border-color .18s ease, transform .18s ease, background .18s ease;
+    transition:all .18s ease;
+    box-shadow:inset 0 1px 0 var(--bezel-light), 0 2px 0 rgba(0,0,0,0.3);
   }
-  .path-card:hover{transform:translateY(-3px); border-color:rgba(255,255,255,0.3);}
-  .path-card:focus-within{outline:2px solid var(--text); outline-offset:3px;}
+  .path-card:hover{
+    transform:translateY(-2px);
+    border-color:var(--accent);
+    box-shadow:inset 0 1px 0 var(--bezel-light), 0 3px 0 rgba(0,0,0,0.3), 0 0 12px rgba(0,255,0,0.15);
+  }
   .path-card.selected{
-    border-color:var(--text);
-    background:linear-gradient(180deg, rgba(255,255,255,0.045), var(--panel) 40%);
+    border:2px solid var(--accent);
+    background:linear-gradient(180deg, rgba(0,255,0,0.08), var(--panel) 40%);
+    box-shadow:inset 0 1px 0 var(--bezel-light), 0 0 16px rgba(0,255,0,0.2);
   }
   .path-select-indicator{
-    display:flex; align-items:center; gap:10px; margin-bottom:20px;
-    font-family:var(--mono); font-size:12px; color:var(--text-dim); text-transform:uppercase; letter-spacing:0.1em;
+    display:flex; align-items:center; gap:10px; margin-bottom:18px;
+    font-family:var(--mono); font-size:10px; color:var(--text-dim); text-transform:uppercase; letter-spacing:0.08em;
   }
   .radio-dot{
-    width:18px; height:18px; border:2px solid var(--text-dim); border-radius:50%;
-    position:relative; flex-shrink:0; transition:border-color .15s ease;
+    width:16px; height:16px; border:2px solid var(--text-dim); border-radius:2px;
+    position:relative; flex-shrink:0; transition:all .15s ease;
+    background:rgba(0,255,0,0.05);
   }
   .radio-dot::after{
-    content:""; position:absolute; inset:3px; border-radius:50%;
-    background:var(--text); opacity:0; transition:opacity .15s ease;
+    content:""; position:absolute; inset:3px; border-radius:1px;
+    background:var(--accent); opacity:0; transition:opacity .15s ease;
+    box-shadow:0 0 6px var(--accent);
   }
-  .path-card.selected .radio-dot{border-color:var(--text);}
+  .path-card.selected .radio-dot{border-color:var(--accent); background:rgba(0,255,0,0.1);}
   .path-card.selected .radio-dot::after{opacity:1;}
-  .path-card.selected .path-select-indicator{color:var(--text);}
+  .path-card.selected .path-select-indicator{color:var(--accent);}
 
-  .path-card h3{font-size:23px; color:var(--text); margin-bottom:8px;}
-  .path-card .who{font-family:var(--mono); font-size:12.5px; color:var(--text-dim); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:16px;}
-  .path-card p{color:var(--text-dim); font-size:16px;}
-  .path-card ul{margin-top:18px; display:flex; flex-direction:column; gap:10px;}
-  .path-card li{font-size:15px; color:#D2D2CC; padding-left:20px; position:relative;}
-  .path-card li::before{content:"—"; position:absolute; left:0; color:var(--text-dim); font-family:var(--mono);}
-  .path-card .btn{margin-top:26px; align-self:flex-start;}
+  .path-card h3{font-size:20px; color:var(--text); margin-bottom:6px; letter-spacing:0.02em;}
+  .path-card .who{font-family:var(--mono); font-size:11px; color:var(--text-dim); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:14px;}
+  .path-card p{color:var(--text-dim); font-size:15px; line-height:1.7;}
+  .path-card ul{margin-top:16px; display:flex; flex-direction:column; gap:10px;}
+  .path-card li{font-size:14px; color:var(--text); padding-left:18px; position:relative; line-height:1.6;}
+  .path-card li::before{content:"→"; position:absolute; left:0; color:var(--accent); font-family:var(--mono); font-weight:bold;}
+  .path-card .btn{margin-top:22px; align-self:flex-start;}
 
-  .steps{display:grid; grid-template-columns:repeat(4,1fr); gap:20px;}
+  .steps{display:grid; grid-template-columns:repeat(4,1fr); gap:16px;}
   @media (max-width:900px){.steps{grid-template-columns:1fr 1fr;}}
   @media (max-width:560px){.steps{grid-template-columns:1fr;}}
-  .step{border-top:2px solid var(--text); padding-top:16px;}
-  .step .num{font-family:var(--mono); font-size:13px; color:var(--text-dim);}
-  .step h3{font-size:17.5px; margin-top:10px; color:var(--text);}
-  .step p{font-size:15px; color:var(--text-dim); margin-top:8px;}
-
-  .mission{background:linear-gradient(180deg, var(--panel), var(--bg-soft)); border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:64px 0;}
-  .mission blockquote{
-    font-family:var(--display); font-weight:600;
-    font-size:clamp(1.3rem,2.4vw,1.9rem);
-    line-height:1.4; max-width:700px; color:var(--text);
+  .step{
+    border:1px solid var(--panel-line);
+    border-radius:3px;
+    padding:20px;
+    background:var(--panel);
+    box-shadow:inset 0 1px 0 var(--bezel-light), 0 2px 0 rgba(0,0,0,0.2);
+    transition:all .2s ease;
   }
-  .mission .attrib{font-family:var(--mono); font-size:12.5px; color:var(--text-dim); margin-top:18px; text-transform:uppercase; letter-spacing:0.1em;}
+  .step:hover{
+    border-color:var(--accent);
+    box-shadow:inset 0 1px 0 var(--bezel-light), 0 2px 0 rgba(0,0,0,0.2), 0 0 10px rgba(0,255,0,0.15);
+  }
+  .step .num{font-family:var(--mono); font-size:24px; font-weight:700; color:var(--accent); text-shadow:0 0 8px rgba(0,255,0,0.3);}
+  .step h3{font-size:16px; margin-top:12px; color:var(--text); letter-spacing:0.01em;}
+  .step p{font-size:14px; color:var(--text-dim); margin-top:8px; line-height:1.6;}
 
-  .founders{display:grid; grid-template-columns:1fr 1fr; gap:24px;}
+  .mission{
+    background:var(--panel);
+    border-top:2px solid var(--bezel-dark);
+    border-bottom:2px solid var(--bezel-dark);
+    padding:60px 0;
+    box-shadow:inset 0 2px 0 var(--bezel-light);
+  }
+  .mission blockquote{
+    font-family:var(--display); font-weight:700;
+    font-size:clamp(1.1rem, 2.2vw, 1.6rem);
+    line-height:1.6; max-width:680px; color:var(--text);
+    letter-spacing:0.02em;
+  }
+  .mission .attrib{font-family:var(--mono); font-size:11px; color:var(--accent); margin-top:16px; text-transform:uppercase; letter-spacing:0.08em;}
+
+  .specs{
+    background:var(--bg-soft);
+    border-top:2px solid var(--bezel-dark);
+    border-bottom:2px solid var(--bezel-dark);
+    box-shadow:inset 0 2px 0 var(--bezel-light);
+  }
+  .spec-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--panel-line);}
+  @media (max-width:820px){.spec-grid{grid-template-columns:1fr 1fr;}}
+  @media (max-width:560px){.spec-grid{grid-template-columns:1fr;}}
+  .spec-item{
+    background:var(--panel);
+    padding:24px;
+    box-shadow:inset 0 1px 0 var(--bezel-light);
+    transition:all .2s ease;
+  }
+  .spec-item:hover{
+    background:var(--panel-light);
+    box-shadow:inset 0 1px 0 var(--bezel-light), 0 0 10px rgba(0,255,0,0.1);
+  }
+  .spec-item .k{font-family:var(--mono); font-size:10px; color:var(--accent); text-transform:uppercase; letter-spacing:0.08em; font-weight:700;}
+  .spec-item h3{font-size:16px; color:var(--text); margin-top:10px; letter-spacing:0.01em;}
+  .spec-item p{font-size:14px; color:var(--text-dim); margin-top:8px; line-height:1.6;}
+
+  .faq{background:var(--bg-soft);}
+  .faq-list{
+    display:flex; flex-direction:column; gap:0;
+    background:transparent;
+    border:2px solid var(--bezel-dark);
+    max-width:820px;
+    border-radius:3px;
+    overflow:hidden;
+    box-shadow:inset 0 1px 0 var(--bezel-light), 0 3px 0 rgba(0,0,0,0.3);
+  }
+  .faq-list details{
+    background:var(--panel);
+    padding:18px 22px;
+    border-bottom:1px solid var(--panel-line);
+    transition:all .2s ease;
+  }
+  .faq-list details:last-child{border-bottom:none;}
+  .faq-list details[open]{background:var(--panel-light); box-shadow:inset 0 2px 0 var(--bezel-light);}
+  .faq-list summary{
+    cursor:pointer; list-style:none; display:flex; justify-content:space-between; align-items:center; gap:16px;
+    font-family:var(--mono); font-weight:600; font-size:14px; color:var(--text);
+    transition:color .15s ease;
+  }
+  .faq-list summary:hover{color:var(--accent);}
+  .faq-list summary::-webkit-details-marker{display:none;}
+  .faq-list summary::after{
+    content:"▼"; font-family:var(--mono); color:var(--text-dim); font-size:12px; flex-shrink:0;
+    transition:transform .15s ease;
+  }
+  .faq-list details[open] summary::after{transform:rotate(180deg); color:var(--accent);}
+  .faq-list p{color:var(--text-dim); font-size:14px; margin-top:12px; max-width:64ch; line-height:1.7;}
+
+  .founders{display:grid; grid-template-columns:1fr 1fr; gap:20px;}
   @media (max-width:760px){.founders{grid-template-columns:1fr;}}
   .founder-card{
-    border:1px solid var(--panel-line);
-    border-radius:8px;
-    padding:28px;
+    border:2px solid var(--panel-line);
+    border-radius:3px;
+    padding:24px;
     background:var(--panel);
+    box-shadow:inset 0 1px 0 var(--bezel-light), 0 2px 0 rgba(0,0,0,0.2);
+    transition:all .2s ease;
+  }
+  .founder-card:hover{
+    border-color:var(--accent);
+    box-shadow:inset 0 1px 0 var(--bezel-light), 0 2px 0 rgba(0,0,0,0.2), 0 0 12px rgba(0,255,0,0.1);
   }
   .founder-mark{
-    width:46px; height:46px;
-    border:1px solid var(--text);
-    border-radius:6px;
+    width:44px; height:44px;
+    border:2px solid var(--accent);
+    border-radius:2px;
     display:flex; align-items:center; justify-content:center;
-    font-family:var(--display); font-weight:700; color:var(--text);
-    margin-bottom:18px;
+    font-family:var(--display); font-weight:700; color:var(--accent);
+    margin-bottom:16px;
+    background:rgba(0,255,0,0.05);
+    font-size:18px;
+    box-shadow:0 0 8px rgba(0,255,0,0.2);
   }
-  .founder-card h3{font-size:19px; color:var(--text);}
-  .founder-card .role{font-family:var(--mono); font-size:12px; color:var(--text-dim); text-transform:uppercase; letter-spacing:0.08em; margin-top:4px;}
-  .founder-card p.bio{margin-top:14px; color:var(--text-dim); font-size:15.5px;}
+  .founder-card h3{font-size:17px; color:var(--text); letter-spacing:0.01em;}
+  .founder-card .role{font-family:var(--mono); font-size:11px; color:var(--text-dim); text-transform:uppercase; letter-spacing:0.08em; margin-top:4px;}
+  .founder-card p.bio{margin-top:12px; color:var(--text-dim); font-size:14px; line-height:1.7;}
 
-  .apply{background:var(--bg-soft); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
-  .apply-grid{display:grid; grid-template-columns:0.85fr 1.15fr; gap:56px; align-items:start;}
+  .apply{background:var(--bg-soft); border-top:2px solid var(--bezel-dark); border-bottom:2px solid var(--bezel-dark); box-shadow:inset 0 2px 0 var(--bezel-light);}
+  .apply-grid{display:grid; grid-template-columns:0.85fr 1.15fr; gap:48px; align-items:start;}
   @media (max-width:820px){.apply-grid{grid-template-columns:1fr;}}
-  .apply h2{font-size:clamp(1.7rem,3vw,2.2rem); color:var(--text);}
-  .apply p{color:var(--text-dim); margin-top:14px; max-width:44ch;}
-  .apply-list{margin-top:24px; display:flex; flex-direction:column; gap:12px; align-items:flex-start;}
+  .apply h2{font-size:clamp(1.5rem, 2.8vw, 2rem); color:var(--text); letter-spacing:0.02em;}
+  .apply p{color:var(--text-dim); margin-top:12px; max-width:48ch; line-height:1.8;}
+  .apply-list{margin-top:20px; display:flex; flex-direction:column; gap:12px; align-items:flex-start;}
 
   .form-embed{
-    background:var(--panel); border:1px solid var(--panel-line); border-radius:8px;
+    background:var(--panel);
+    border:2px solid var(--panel-line);
+    border-radius:3px;
     overflow:hidden;
+    box-shadow:inset 0 1px 0 var(--bezel-light), 0 3px 0 rgba(0,0,0,0.3);
   }
   .form-embed iframe{width:100%; height:900px; border:0; display:block; background:var(--panel);}
   .form-fallback{
     padding:16px 20px; border-top:1px solid var(--panel-line);
     display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;
   }
-  .form-fallback p{font-family:var(--mono); font-size:12px; color:var(--text-dim);}
+  .form-fallback p{font-family:var(--mono); font-size:11px; color:var(--text-dim);}
 
-  .specs{background:var(--panel); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
-  .spec-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--panel-line); border:1px solid var(--panel-line);}
-  @media (max-width:820px){.spec-grid{grid-template-columns:1fr 1fr;}}
-  @media (max-width:560px){.spec-grid{grid-template-columns:1fr;}}
-  .spec-item{background:var(--bg-soft); padding:26px 24px;}
-  .spec-item .k{font-family:var(--mono); font-size:11.5px; color:var(--text-dim); text-transform:uppercase; letter-spacing:0.1em;}
-  .spec-item h3{font-size:18px; color:var(--text); margin-top:10px;}
-  .spec-item p{font-size:15px; color:var(--text-dim); margin-top:8px;}
-
-  .faq{background:var(--bg-soft);}
-  .faq-list{display:flex; flex-direction:column; gap:1px; background:var(--panel-line); border:1px solid var(--panel-line); max-width:820px; border-radius:8px; overflow:hidden;}
-  .faq-list details{background:var(--panel); padding:22px 26px;}
-  .faq-list summary{
-    cursor:pointer; list-style:none; display:flex; justify-content:space-between; align-items:center; gap:20px;
-    font-family:var(--display); font-weight:600; font-size:16.5px; color:var(--text);
-    transition:color .15s ease;
-  }
-  .faq-list summary:hover{color:rgba(242, 242, 240, 0.8);}
-  .faq-list summary::-webkit-details-marker{display:none;}
-  .faq-list summary::after{
-    content:"+"; font-family:var(--mono); color:var(--text-dim); font-size:20px; flex-shrink:0;
-    transition:transform .15s ease;
-  }
-  .faq-list details[open] summary::after{transform:rotate(45deg);}
-  .faq-list p{color:var(--text-dim); font-size:15.5px; margin-top:14px; max-width:64ch;}
-
-  footer{padding:56px 0 40px;}
-  .footer-top{display:flex; justify-content:space-between; flex-wrap:wrap; gap:28px; padding-bottom:32px; border-bottom:1px solid var(--line);}
-  .footer-cols{display:flex; gap:56px; flex-wrap:wrap;}
-  .footer-col h4{font-family:var(--mono); font-size:12px; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-dim); margin-bottom:14px;}
-  .footer-col a, .footer-col span{display:block; color:var(--text-dim); font-size:14.5px; text-decoration:none; margin-bottom:8px;}
-  .footer-col a:hover{color:var(--text);}
-  .footer-bottom{display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; padding-top:24px; font-family:var(--mono); font-size:12px; color:var(--text-dim);}
+  footer{padding:48px 0 32px; border-top:2px solid var(--bezel-dark); box-shadow:inset 0 2px 0 var(--bezel-light);}
+  .footer-top{display:flex; justify-content:space-between; flex-wrap:wrap; gap:24px; padding-bottom:28px; border-bottom:1px solid var(--panel-line);}
+  .footer-cols{display:flex; gap:48px; flex-wrap:wrap;}
+  .footer-col h4{font-family:var(--mono); font-size:10px; text-transform:uppercase; letter-spacing:0.08em; color:var(--accent); margin-bottom:14px; font-weight:700;}
+  .footer-col a, .footer-col span{display:block; color:var(--text-dim); font-size:14px; text-decoration:none; margin-bottom:8px; transition:color .15s ease;}
+  .footer-col a:hover{color:var(--accent);}
+  .footer-bottom{display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; padding-top:20px; font-family:var(--mono); font-size:11px; color:var(--text-dim);}
 </style>
 </head>
 <body>
 
 <header>
   <nav class="wrap">
-    <a href="#top" class="brand"><span class="dot"></span>Second Boot</a>
+    <a href="#top" class="brand"><span class="dot"></span>SECOND BOOT</a>
     <button class="navtoggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
     <ul class="navlinks" id="navLinks">
       <li><a href="#how">How It Works</a></li>
@@ -358,7 +443,7 @@
 </header>
 
 <noscript>
-  <p style="padding: 20px; background: var(--bg-soft); color: var(--text); text-align: center;">This site works best with JavaScript enabled for navigation and interactivity.</p>
+  <p style="padding: 20px; background: var(--bg-soft); color: var(--text); text-align: center; border-bottom: 2px solid var(--bezel-dark);">This site works best with JavaScript enabled for navigation and interactivity.</p>
 </noscript>
 
 <main id="top">
@@ -366,9 +451,9 @@
   <section class="hero">
     <div class="wrap">
       <div class="hero-copy">
-        <span class="tag">Nonprofit · Ayman Butt &amp; Caleb Knowles</span>
-        <h1>A computer changes<br>what's <em>possible</em>.</h1>
-        <p class="lede">Second Boot rebuilds donated computers and puts them back to work. If you're out of a job, we give you one, free. If you have a job but the budget's tight, we build you one and offer help to make it affordable.</p>
+        <span class="tag">Nonprofit · Ayman Butt & Caleb Knowles</span>
+        <h1>Your machine.<br>No catch.</h1>
+        <p class="lede">We rebuild donated computers and put them back to work. No income? Free. Working but broke? Sliding scale. You need it, we build it, you get it.</p>
         <div class="hero-ctas">
           <a href="#paths" class="btn btn-primary">Find your path</a>
           <a href="#apply" class="btn btn-ghost">Apply now</a>
@@ -380,7 +465,7 @@
         <svg viewBox="0 0 480 440" fill="none" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <filter id="softGlow" x="-60%" y="-60%" width="220%" height="220%">
-              <feGaussianBlur stdDeviation="6" result="blur"/>
+              <feGaussianBlur stdDeviation="4" result="blur"/>
               <feMerge>
                 <feMergeNode in="blur"/>
                 <feMergeNode in="SourceGraphic"/>
@@ -388,45 +473,45 @@
             </filter>
           </defs>
 
-          <rect class="draw" x="30" y="20" width="420" height="380" rx="10" stroke="#F2F2F0" stroke-width="2"/>
-          <rect class="draw d2" x="46" y="36" width="240" height="348" rx="6" stroke="#2A2A2A" stroke-width="1.2"/>
+          <rect class="draw" x="30" y="20" width="420" height="380" rx="8" stroke="#00FF00" stroke-width="2.5" filter="url(#softGlow)"/>
+          <rect class="draw d2" x="46" y="36" width="240" height="348" rx="5" stroke="#333333" stroke-width="1"/>
 
-          <circle class="draw d2" cx="100" cy="95" r="32" stroke="#CFCFCF" stroke-width="1.5"/>
-          <circle class="draw d2" cx="100" cy="95" r="10" stroke="#CFCFCF" stroke-width="1"/>
-          <line class="draw d2" x1="100" y1="65" x2="100" y2="125" stroke="#2A2A2A" stroke-width="1"/>
-          <line class="draw d2" x1="70" y1="95" x2="130" y2="95" stroke="#2A2A2A" stroke-width="1"/>
+          <circle class="draw d2" cx="100" cy="95" r="32" stroke="#00FF00" stroke-width="1.5" filter="url(#softGlow)"/>
+          <circle class="draw d2" cx="100" cy="95" r="10" stroke="#333333" stroke-width="1"/>
+          <line class="draw d2" x1="100" y1="65" x2="100" y2="125" stroke="#333333" stroke-width="1"/>
+          <line class="draw d2" x1="70" y1="95" x2="130" y2="95" stroke="#333333" stroke-width="1"/>
 
-          <rect class="draw d2" x="150" y="55" width="10" height="80" rx="2" stroke="#CFCFCF" stroke-width="1.2"/>
-          <rect class="draw d2" x="166" y="55" width="10" height="80" rx="2" stroke="#CFCFCF" stroke-width="1.2"/>
-          <circle class="glow-pulse" cx="155" cy="60" r="2" fill="#CFCFCF" filter="url(#softGlow)"/>
-          <circle class="glow-pulse" cx="171" cy="60" r="2" fill="#CFCFCF" filter="url(#softGlow)"/>
+          <rect class="draw d2" x="150" y="55" width="10" height="80" rx="2" stroke="#00FF00" stroke-width="1.2" filter="url(#softGlow)"/>
+          <rect class="draw d2" x="166" y="55" width="10" height="80" rx="2" stroke="#00FF00" stroke-width="1.2" filter="url(#softGlow)"/>
+          <circle class="glow-pulse" cx="155" cy="60" r="2.5" fill="#00FF00"/>
+          <circle class="glow-pulse" cx="171" cy="60" r="2.5" fill="#00FF00"/>
 
-          <path class="draw d3" d="M200 60 h40 v20 h-20 v15 M100 130 v20 h40" stroke="#2A2A2A" stroke-width="1"/>
+          <path class="draw d3" d="M200 60 h40 v20 h-20 v15 M100 130 v20 h40" stroke="#333333" stroke-width="1"/>
 
-          <rect class="draw d2" x="66" y="190" width="200" height="56" rx="4" stroke="#F2F2F0" stroke-width="1.6"/>
-          <circle class="draw d3" cx="105" cy="218" r="18" stroke="#CFCFCF" stroke-width="1.2"/>
-          <circle class="draw d3" cx="150" cy="218" r="18" stroke="#CFCFCF" stroke-width="1.2"/>
-          <line class="draw d3" x1="66" y1="252" x2="266" y2="252" stroke="#2A2A2A" stroke-width="6"/>
+          <rect class="draw d2" x="66" y="190" width="200" height="56" rx="4" stroke="#00FF00" stroke-width="1.4" filter="url(#softGlow)"/>
+          <circle class="draw d3" cx="105" cy="218" r="18" stroke="#333333" stroke-width="1"/>
+          <circle class="draw d3" cx="150" cy="218" r="18" stroke="#333333" stroke-width="1"/>
+          <line class="draw d3" x1="66" y1="252" x2="266" y2="252" stroke="#333333" stroke-width="6"/>
 
-          <path class="draw d3" d="M266 210 q26 6 26 40 q0 40 -30 46" stroke="#2A2A2A" stroke-width="1.4"/>
+          <path class="draw d3" d="M266 210 q26 6 26 40 q0 40 -30 46" stroke="#333333" stroke-width="1.2"/>
 
-          <rect class="draw d2" x="66" y="270" width="200" height="18" rx="2" stroke="#2A2A2A" stroke-width="1.2"/>
-          <rect class="draw d2" x="66" y="294" width="200" height="18" rx="2" stroke="#2A2A2A" stroke-width="1.2"/>
-          <circle class="glow-pulse" cx="256" cy="279" r="2" fill="#CFCFCF"/>
+          <rect class="draw d2" x="66" y="270" width="200" height="18" rx="2" stroke="#333333" stroke-width="1"/>
+          <rect class="draw d2" x="66" y="294" width="200" height="18" rx="2" stroke="#333333" stroke-width="1"/>
+          <circle class="glow-pulse" cx="256" cy="279" r="2.5" fill="#00FF00"/>
 
-          <circle class="draw d2" cx="365" cy="120" r="58" stroke="#F2F2F0" stroke-width="1.6"/>
-          <circle class="glow-pulse" cx="365" cy="120" r="40" stroke="#CFCFCF" stroke-width="1" filter="url(#softGlow)"/>
-          <path class="draw d3" d="M365 82v76M327 120h76M340 95l50 50M390 95l-50 50" stroke="#2A2A2A" stroke-width="1"/>
+          <circle class="draw d2" cx="365" cy="120" r="58" stroke="#00FF00" stroke-width="1.4" filter="url(#softGlow)"/>
+          <circle class="glow-pulse" cx="365" cy="120" r="40" stroke="#00FF00" stroke-width="0.8" filter="url(#softGlow)"/>
+          <path class="draw d3" d="M365 82v76M327 120h76M340 95l50 50M390 95l-50 50" stroke="#333333" stroke-width="1"/>
 
-          <circle class="draw d2" cx="365" cy="250" r="58" stroke="#F2F2F0" stroke-width="1.6"/>
-          <circle class="glow-pulse" cx="365" cy="250" r="40" stroke="#CFCFCF" stroke-width="1" filter="url(#softGlow)"/>
-          <path class="draw d3" d="M365 212v76M327 250h76M340 225l50 50M390 225l-50 50" stroke="#2A2A2A" stroke-width="1"/>
+          <circle class="draw d2" cx="365" cy="250" r="58" stroke="#00FF00" stroke-width="1.4" filter="url(#softGlow)"/>
+          <circle class="glow-pulse" cx="365" cy="250" r="40" stroke="#00FF00" stroke-width="0.8" filter="url(#softGlow)"/>
+          <path class="draw d3" d="M365 212v76M327 250h76M340 225l50 50M390 225l-50 50" stroke="#333333" stroke-width="1"/>
 
-          <rect class="draw" x="55" y="400" width="26" height="10" rx="2" stroke="#F2F2F0" stroke-width="1.4"/>
-          <rect class="draw" x="399" y="400" width="26" height="10" rx="2" stroke="#F2F2F0" stroke-width="1.4"/>
+          <rect class="draw" x="55" y="400" width="26" height="10" rx="2" stroke="#00FF00" stroke-width="1.4" filter="url(#softGlow)"/>
+          <rect class="draw" x="399" y="400" width="26" height="10" rx="2" stroke="#00FF00" stroke-width="1.4" filter="url(#softGlow)"/>
 
-          <text x="322" y="335" fill="#96968F" font-family="Share Tech Mono" font-size="10" letter-spacing="1">BUDGET BUILD</text>
-          <text x="46" y="405" fill="#96968F" font-family="Share Tech Mono" font-size="10" letter-spacing="1">REBUILT // TESTED // READY</text>
+          <text x="322" y="335" fill="#00FF00" font-family="IBM Plex Mono" font-size="11" letter-spacing="1" filter="url(#softGlow)">BUDGET BUILD</text>
+          <text x="46" y="405" fill="#00FF00" font-family="IBM Plex Mono" font-size="10" letter-spacing="1" filter="url(#softGlow)">REBUILT // TESTED // READY</text>
         </svg>
       </div>
     </div>
@@ -437,36 +522,36 @@
   <section class="paths" id="paths">
     <div class="wrap">
       <div class="section-head">
-        <span class="tag">Select your path</span>
-        <h2>Everyone gets a computer. Pick which way you get there.</h2>
-        <p>Tap a card to select it — then head down to the application form.</p>
+        <span class="tag">Choose your route</span>
+        <h2>Pick the path that fits you.</h2>
+        <p>Click a card below to select it, then head to the application.</p>
       </div>
 
       <div class="path-grid" role="radiogroup" aria-label="Choose your path">
         <div class="path-card" data-path="Path A — Unemployed or no current income" role="radio" aria-checked="false" tabindex="0">
-          <div class="path-select-indicator"><div class="radio-dot"></div>Path A · Select</div>
-          <div class="who">Unemployed, on public assistance, or a full-time student with no income</div>
-          <h3>We give you a computer. Free.</h3>
-          <p>A fully refurbished, tested machine at no cost to you — no payments, no fine print.</p>
+          <div class="path-select-indicator"><div class="radio-dot"></div>Path A</div>
+          <h3>No income? Free.</h3>
+          <div class="who">Unemployed, student, or on assistance</div>
+          <p>A rebuilt computer. Fully tested. No cost to you.</p>
           <ul>
-            <li>Currently unemployed and job hunting</li>
-            <li>Receiving unemployment, SNAP, SSI, or similar assistance</li>
-            <li>Full-time student with no income of your own</li>
-            <li>Single parent or caregiver with no household income</li>
+            <li>Job hunting right now</li>
+            <li>On SNAP, SSI, unemployment</li>
+            <li>Full-time student, no income</li>
+            <li>Single parent or caregiver</li>
           </ul>
-          <a href="#apply" class="btn btn-ghost">Apply for a free computer</a>
+          <a href="#apply" class="btn btn-ghost">Apply for free</a>
         </div>
 
         <div class="path-card" data-path="Path B — Employed but need cost assistance" role="radio" aria-checked="false" tabindex="0">
-          <div class="path-select-indicator"><div class="radio-dot"></div>Path B · Select</div>
-          <div class="who">Working, but a computer isn't in this month's budget</div>
-          <h3>We build it, and help you afford it.</h3>
-          <p>We build a computer suited to what you actually need, and offer cost assistance so the price fits your budget.</p>
+          <div class="path-select-indicator"><div class="radio-dot"></div>Path B</div>
+          <h3>Working? We'll meet you halfway.</h3>
+          <div class="who">Employed but budget is tight</div>
+          <p>We build it. We price it fair. You own it.</p>
           <ul>
-            <li>Employed full-time, part-time, or as a freelancer/gig worker</li>
-            <li>Household income too tight to buy a computer outright</li>
-            <li>Need it for the job you have, or one you're applying to</li>
-            <li>Sliding-scale price, self-reported — no pay stubs required</li>
+            <li>Working full-time or part-time</li>
+            <li>Freelancer or gig worker</li>
+            <li>Budget too tight to buy it yourself</li>
+            <li>Sliding scale — no proof needed</li>
           </ul>
           <a href="#apply" class="btn btn-primary">Request a build</a>
         </div>
@@ -477,41 +562,41 @@
   <section class="specs" id="specs">
     <div class="wrap">
       <div class="section-head">
-        <span class="tag">What you're actually getting</span>
-        <h2>Inside every build</h2>
-        <p>Whether it's a free grant or an assisted build, every machine goes through the same standard before it reaches you.</p>
+        <span class="tag">The specs</span>
+        <h2>What comes inside</h2>
+        <p>Same standard for everyone. Free or assisted build — every machine goes through the same process.</p>
       </div>
     </div>
     <div class="spec-grid">
       <div class="spec-item">
         <div class="k mono">Hardware</div>
-        <h3>Donated &amp; sourced parts</h3>
-        <p>Cases, drives, memory, and boards come from community and business donations, plus parts we buy when a build needs something specific.</p>
+        <h3>Salvaged & sourced</h3>
+        <p>Donations from the community and businesses. Fill the gaps with parts we buy. Nothing generic about it.</p>
       </div>
       <div class="spec-item">
         <div class="k mono">Testing</div>
-        <h3>Burn-in &amp; stress tested</h3>
-        <p>Every machine runs a multi-hour stress test before handoff, so drives, memory, and cooling are checked under real load, not just powered on.</p>
+        <h3>Stress tested for hours</h3>
+        <p>Multi-hour burn-in. Memory, drives, cooling — under real load, not just powered on and hoped for.</p>
       </div>
       <div class="spec-item">
         <div class="k mono">Software</div>
-        <h3>Ready on day one</h3>
-        <p>A clean OS install with browser, office software, and security updates already in place — no setup required when you get it home.</p>
+        <h3>Ready when you plug it in</h3>
+        <p>Clean OS. Browser. Office software. Security updates. No setup required. Just power on and work.</p>
       </div>
       <div class="spec-item">
         <div class="k mono">Warranty</div>
-        <h3>90-day support window</h3>
-        <p>If something goes wrong within 90 days of pickup or delivery, bring it back and we'll repair or replace it at no extra cost.</p>
+        <h3>90 days we've got you</h3>
+        <p>Something breaks in the first 90 days? Bring it back. We fix or replace it. No extra charge.</p>
       </div>
       <div class="spec-item">
-        <div class="k mono">Fit</div>
-        <h3>Sized to the task</h3>
-        <p>We ask what you'll use the computer for — job applications, schoolwork, remote work — and match the build to that, not the other way around.</p>
+        <div class="k mono">Built for you</div>
+        <h3>Matched to what you do</h3>
+        <p>Tell us what it's for — job hunting, remote work, school — and we match the build to that task.</p>
       </div>
       <div class="spec-item">
-        <div class="k mono">Sustainability</div>
-        <h3>Fewer machines in landfill</h3>
-        <p>Parts that don't make it into a working build are stripped for components or recycled responsibly rather than thrown out.</p>
+        <div class="k mono">Sustainable</div>
+        <h3>Out of the landfill</h3>
+        <p>Parts that don't make the cut get recycled responsibly. Fewer machines in the dump.</p>
       </div>
     </div>
   </section>
@@ -519,30 +604,30 @@
   <section id="how">
     <div class="wrap">
       <div class="section-head">
-        <span class="tag">The process</span>
-        <h2>From application to power-on</h2>
-        <p>The same four steps, whichever path you're on — most applicants hear back within a week and have a machine within two to three.</p>
+        <span class="tag">How it works</span>
+        <h2>From apply to power-on</h2>
+        <p>Four simple steps. You'll hear back in days, have a machine in a few weeks.</p>
       </div>
       <div class="steps">
         <div class="step">
-          <div class="num mono">01</div>
-          <h3>Tell us your situation</h3>
-          <p>A short application — income status, what you need a computer for, household size.</p>
+          <div class="num">01</div>
+          <h3>Tell us about you</h3>
+          <p>Quick form. Income status. What you need it for. Household size. That's it.</p>
         </div>
         <div class="step">
-          <div class="num mono">02</div>
-          <h3>We match your path</h3>
-          <p>We confirm whether you're a free-grant or assisted-build case and follow up within days.</p>
+          <div class="num">02</div>
+          <h3>We confirm your path</h3>
+          <p>Free grant or assisted build. We follow up within days and tell you what's next.</p>
         </div>
         <div class="step">
-          <div class="num mono">03</div>
-          <h3>We build or refurbish</h3>
-          <p>Volunteers clean, repair, and test hardware, then install what you'll actually use.</p>
+          <div class="num">03</div>
+          <h3>We build it</h3>
+          <p>Our volunteers clean, repair, and test. Then load it with what you'll actually use.</p>
         </div>
         <div class="step">
-          <div class="num mono">04</div>
-          <h3>Pickup or delivery</h3>
-          <p>You get a working machine and a quick walkthrough — and a contact if anything goes wrong.</p>
+          <div class="num">04</div>
+          <h3>You pick it up</h3>
+          <p>A working machine. We walk you through it. We'll be here if something goes wrong.</p>
         </div>
       </div>
     </div>
@@ -550,30 +635,30 @@
 
   <section class="mission">
     <div class="wrap">
-      <blockquote>"A working computer shouldn't be out of reach because of what's in your bank account — or unaffordable just because you have a job."</blockquote>
-      <div class="attrib mono">— Second Boot, founding mission</div>
+      <blockquote>"A computer shouldn't be out of reach because you're broke, or unaffordable because you have a job."</blockquote>
+      <div class="attrib mono">Second Boot Mission Statement</div>
     </div>
   </section>
 
   <section id="about">
     <div class="wrap">
       <div class="section-head">
-        <span class="tag">Who's behind it</span>
-        <h2>Founded by two people who wanted computers to reach further</h2>
-        <p>Second Boot started as a way to put usable hardware back into people's hands instead of a landfill.</p>
+        <span class="tag">Who built this</span>
+        <h2>Founded by two people who wanted more</h2>
+        <p>Two founders. One mission. Get computers to the people who need them.</p>
       </div>
       <div class="founders">
         <div class="founder-card">
           <div class="founder-mark">AB</div>
           <h3>Ayman Butt</h3>
           <div class="role">Co-Founder</div>
-          <p class="bio">Co-founded Second Boot to make sure access to a computer never depends on someone's income.</p>
+          <p class="bio">Started Second Boot to prove that computer access shouldn't depend on your bank account.</p>
         </div>
         <div class="founder-card">
           <div class="founder-mark">CK</div>
           <h3>Caleb Knowles</h3>
           <div class="role">Co-Founder</div>
-          <p class="bio">Co-founded Second Boot and helps run the build program that turns donated hardware into working machines.</p>
+          <p class="bio">Runs the build program. Turns donated hardware into working machines. Makes the magic happen.</p>
         </div>
       </div>
     </div>
@@ -584,28 +669,28 @@
       <div class="section-head">
         <span class="tag">Questions</span>
         <h2>Before you apply</h2>
-        <p>The most common things people ask us. Reach out if yours isn't covered here.</p>
+        <p>Questions we get asked. If yours isn't here, reach out and ask.</p>
       </div>
       <div class="faq-list">
         <details>
-          <summary>How do you decide who qualifies for a free computer?</summary>
-          <p>Path A is prioritized for people currently without income — job seekers, students, and families in need. We ask about your situation on the application so we can match you to the right path. Not everyone on Path A will qualify for a completely free machine, but everyone gets evaluated fairly.</p>
+          <summary>Who qualifies for a free computer?</summary>
+          <p>Path A is for people with zero income right now — job hunters, students, or on public assistance. We ask on the form so we can match you right. Be honest about your situation.</p>
         </details>
         <details>
-          <summary>What does "cost assistance" actually mean for Path B?</summary>
-          <p>If you have a job, we still don't charge full retail. Pricing is scaled to what you can reasonably afford, and we offer payment plans instead of asking for the full amount up front. You tell us your monthly budget, and we build and price accordingly.</p>
+          <summary>What is "cost assistance"?</summary>
+          <p>You have a job, so we don't charge full price. You tell us what you can afford — no pay stubs, no proof — and we price it there. We offer payment plans too, so you're not stuck paying it all upfront.</p>
         </details>
         <details>
-          <summary>What condition are the computers in?</summary>
-          <p>Refurbished, not used-as-is. Every machine is cleaned, tested under load, and repaired or replaced part-by-part where needed before it goes out, and it comes with a 90-day support window. We stand behind our work.</p>
+          <summary>What shape are these computers in?</summary>
+          <p>Rebuilt, not used-as-is. Cleaned, tested for hours under load, repaired or replaced part-by-part. Every machine comes with 90 days of support. If something breaks, bring it back and we'll fix it.</p>
         </details>
         <details>
-          <summary>Can I choose what kind of computer I get?</summary>
-          <p>You can tell us what you need it for — job applications, schoolwork, remote work — and we'll match a build to that. We work with what's been donated or sourced, so exact specs vary, but we always prioritize fit over listing specs.</p>
+          <summary>Can I pick what kind of computer I get?</summary>
+          <p>Tell us what you'll use it for — job applications, schoolwork, remote work — and we match a build to that. We work with what's donated, so specs vary, but it'll do what you need it to.</p>
         </details>
         <details>
-          <summary>Can I donate a computer instead of applying for one?</summary>
-          <p>Yes — email us at <a href="mailto:madguy8288@gmail.com" style="color:var(--text); text-decoration:underline;">madguy8288@gmail.com</a> and we'll let you know what we're currently able to accept and how to get it to us.</p>
+          <summary>Can I donate a computer?</summary>
+          <p>Yes. Email us at <a href="mailto:805-801-5585" style="color:var(--accent); text-decoration:underline; text-shadow:0 0 4px rgba(0,255,0,0.3);">805-801-5585</a> or call and we'll let you know what we can take and what happens next.</p>
         </details>
       </div>
     </div>
@@ -614,21 +699,24 @@
   <section class="apply" id="apply">
     <div class="wrap apply-grid">
       <div>
-        <span class="tag">Ready when you are</span>
-        <h2 style="margin-top:14px;">Apply for your computer</h2>
-        <p>Fill out the application below. We'll follow up to confirm your path and next steps — usually within a few business days.</p>
+        <span class="tag">Ready to apply</span>
+        <h2 style="margin-top:14px;">Get your computer</h2>
+        <p>Fill out the form below. We follow up to confirm your path and next steps — usually within a few business days.</p>
         <div class="apply-list">
-          <span class="tag">No cost for Path A</span>
-          <span class="tag">Sliding-scale pricing for Path B</span>
-          <span class="tag">Response within a few business days</span>
+          <span class="tag">Path A: Free</span>
+          <span class="tag">Path B: Sliding scale</span>
+          <span class="tag">Response in days</span>
         </div>
+        <p style="margin-top:20px; color:var(--accent); font-family:var(--mono); font-size:13px;">
+          Questions? Call us: <strong>805-801-5585</strong>
+        </p>
       </div>
 
       <div class="form-embed">
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSehCtKpOtp0I8Cw-qYEYjyrDqKMZghz8FH2Q2-B1XUMNCw7zg/viewform?embedded=true" title="Second Boot application form" loading="lazy">Loading application form…</iframe>
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSehCtKpOtp0I8Cw-qYEYjyrDqKMZghz8FH2Q2-B1XUMNCw7zg/viewform?embedded=true" title="Second Boot application form" loading="lazy">Loading form...</iframe>
         <div class="form-fallback">
           <p class="mono">Form not loading?</p>
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSehCtKpOtp0I8Cw-qYEYjyrDqKMZghz8FH2Q2-B1XUMNCw7zg/viewform?usp=sharing" target="_blank" rel="noopener" class="btn btn-ghost">Open in a new tab</a>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSehCtKpOtp0I8Cw-qYEYjyrDqKMZghz8FH2Q2-B1XUMNCw7zg/viewform?usp=sharing" target="_blank" rel="noopener" class="btn btn-ghost">Open in new tab</a>
         </div>
       </div>
     </div>
@@ -640,8 +728,8 @@
   <div class="wrap">
     <div class="footer-top">
       <div>
-        <a href="#top" class="brand"><span class="dot"></span>Second Boot</a>
-        <p style="color:var(--text-dim); font-size:14.5px; margin-top:12px; max-width:34ch;">A nonprofit rebuilding computers and putting them back to work — free for those without income, affordable for those with tight budgets.</p>
+        <a href="#top" class="brand"><span class="dot"></span>SECOND BOOT</a>
+        <p style="color:var(--text-dim); font-size:14px; margin-top:12px; max-width:38ch; line-height:1.7;">A nonprofit rebuilding computers and putting them back to work — free for those with no income, affordable for those who need help.</p>
       </div>
       <div class="footer-cols">
         <div class="footer-col">
@@ -654,11 +742,12 @@
           <h4>Organization</h4>
           <a href="#about">Founders</a>
           <a href="#apply">Apply</a>
-          <span>Donate hardware — email us</span>
+          <a href="tel:805-801-5585">Call us</a>
         </div>
         <div class="footer-col">
           <h4>Contact</h4>
-          <a href="mailto:madguy8288@gmail.com">madguy8288@gmail.com</a>
+          <a href="tel:805-801-5585">805-801-5585</a>
+          <span>Open to donations</span>
         </div>
       </div>
     </div>
